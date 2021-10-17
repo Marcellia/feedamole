@@ -1,125 +1,131 @@
 function getSadInterval() {
-    return Date.now()*1000
+    return Date.now()+500
 }
 function getGoneInterval() {
-    return Date.now()+ Math.floor(Math.random()*15000)+2000
+    return Date.now()+ Math.floor(Math.random()*20000)+2000
 }
 
 function getHungryInterval() {
-    return Date.now()*1000
+    return Date.now()+2000
 }
+  
+console.log(document.getElementById("hole-0"), "getbyelement")
 
 const moles = [
     {
         status: 'sad',
         next:getSadInterval(),
         king: false,
-        node: document.querySelector("hole-0")
-
+        node:document.getElementById("hole-0")
     },
     {
         status: 'sad',
         next:getSadInterval(),
         king: false,
-        node: document.querySelector("hole-1")
-
+        node: document.getElementById("hole-1")
     },
     {
         status: 'sad',
         next:getSadInterval(),
         king: false,
-        node: document.querySelector("hole-2")
-
+        node: document.getElementById("hole-2")
     },
     {
         status: 'sad',
         next:getSadInterval(),
         king: false,
-        node: document.querySelector("hole-3")
-
+        node: document.getElementById("hole-3")
     },
     {
         status: 'sad',
         next:getSadInterval(),
         king: false,
-        node: document.querySelector("hole-4")
-
+        node: document.getElementById("hole-4")
     },
     {
         status: 'sad',
         next:getSadInterval(),
         king: false,
-        node: document.querySelector("hole-5")
-
+        node: document.getElementById("hole-5")
     },
     {
         status: 'sad',
         next:getSadInterval(),
         king: false,
-        node: document.querySelector("hole-6")
-
+        node: document.getElementById("hole-6")
     },
     {
         status: 'sad',
         next:getSadInterval(),
         king: false,
-        node: document.querySelector("hole-7")
-
+        node: document.getElementById("hole-7")
     },
     {
         status: 'sad',
         next:getSadInterval(),
         king: false,
-        node: document.querySelector("hole-8")
-
+        node: document.getElementById("hole-8")
     },
     {
         status: 'sad',
         next:getSadInterval(),
         king: false,
-        node: document.querySelector("hole-9")
-
+        node: document.getElementById("hole-9")
     }
   
-]
+];
 
 function getNextStatus(mole) {
-    switch(mole.status) {
-        case "sad":
+    console.log(" Am in getNextStatus")
+switch(mole.status) {
+        case 'sad':
             mole.next = getSadInterval();
             mole.status="leaving"; 
-            mole.node.children[0].src = "./mole-leaving.png"
-break;
+            mole.node.children[0].src = "./mole-leaving.png";
+        break;
  
-case "leaving":
-    mole.next = getGoneInterval();
-    mole.status="gone"; 
-    mole.node.children[0].classList.add("gone")
-break;
+        case "leaving":
+            mole.status="gone"; 
+            mole.next = getGoneInterval();
+            mole.node.children[0].classList.add("gone")
+        break;
 
-case"gone":
-mole.status = 'hungry'
-mole.next= getHungryInterval();
-mole.node.children[0].classList.add("hungry");
-mole.node.children[0].classList.remove("gone");
-mole.node.children[0].src="./mole-hungry.png";
+        case"gone":
+            mole.status = 'hungry'
+            mole.next= getHungryInterval();
+            mole.node.children[0].classList.add("hungry");
+            mole.node.children[0].classList.remove("gone");
+            mole.node.children[0].src="./mole-hungry.png";
+        break;
+
+        case"hungry":
+            mole.status='sad'
+            mole.node.children[0].classList.remove("hungry");
+            mole.next=getSadInterval();
+            mole.node.children[0].src ="./mole-sad.png"
+        break;
     }
 }
 
 
-let runAgainAt = Date.now() +100;
-
-function nextFrame(){
-const now = Date.now();
-
-if (runAgainAt<=now) {
+let runAgainAt = Date.now()+100;
+let temp = getSadInterval()
+let dateNow = Date.now()
 
 
-for(let i =0; i<moles.length; i++) {
-    if (moles[i].next<=now) {
+const nextFrame = () => {
+
+    const now = Date.now();
+ 
+    for (let i = 0; i < moles.length; i++) {
+  
+      if (moles[i].next <= now) {
+        console.log(moles[i],"moles[i]")
         getNextStatus(moles[i]);
+      }
+      runAgainAt = now+100;
     }
-}
-}
-
-}
+    requestAnimationFrame(nextFrame);
+  };
+  
+  nextFrame();

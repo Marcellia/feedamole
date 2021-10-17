@@ -11,6 +11,9 @@ const getSadInterval = () => Date.now() + SAD_INTERVAL;
 const getKingStatus = () => Math.random() > 0.9;
 const getHungryInterval = () => Date.now() + HUNGRY_INTERVAL;
 
+const sadInterval = (getSadInterval)
+console.log(sadInterval)
+
 const moles = [
   {
     status: "sad",
@@ -75,6 +78,7 @@ const moles = [
 ];
 
 const getNextStatus = mole => {
+  console.log(" Am in getNextStatus")
   switch (mole.status) {
     case "sad":
     case "fed":
@@ -152,10 +156,14 @@ document.querySelector(".bg").addEventListener("click", feed);
 
 const nextFrame = () => {
   const now = Date.now();
+
   for (let i = 0; i < moles.length; i++) {
     if (moles[i].next < now) {
+      console.log(moles[i],"moles[i]")
+      console.log("inside loop of next frame" )
       getNextStatus(moles[i]);
     }
+    runAgainAt = now+100;
   }
   requestAnimationFrame(nextFrame);
 };
