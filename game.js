@@ -13,7 +13,7 @@ function getHungryInterval() {
     return Date.now()+2000
 }
   
-const getKingStatus = () => Math.random() > 0.9;
+const getKingStatus = () => Math.random() > 0.8;
 
 const moles = [
     {
@@ -130,20 +130,31 @@ function feed (event) {
 return;
     }
 
+let wormContainer = document.querySelector('.worm-container');
+
 const mole = moles[parseInt(event.target.dataset.index)]
 
    mole.status= "fed";
    mole.next=getSadInterval();
-   mole.node.children[0].src="./mole-fed.png";
+   if (mole.king){
+     mole.node.children[0].src='./king-mole-fed.png';}
+   else {
+   mole.node.children[0].src="./mole-fed.png";}
+   
    mole.node.children[0].classList.remove('hungry')
-score++
+
+   if (mole.king){
+   score+=2} else{
+     score++
+   }
 
 if(score>=10) {
 win();
 return;
 }
-wormContainer.style.width = `${score}%`;
+wormContainer.style.width = `${10*score}%`;
 
+document.querySelector(".score").innerHTML=`${score}`
 }
 
 const win = () => {
