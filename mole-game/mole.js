@@ -78,7 +78,7 @@ const moles = [
 ];
 
 const getNextStatus = mole => {
-  console.log(" Am in getNextStatus")
+ 
   switch (mole.status) {
     case "sad":
     case "fed":
@@ -159,8 +159,7 @@ const nextFrame = () => {
 
   for (let i = 0; i < moles.length; i++) {
     if (moles[i].next < now) {
-      console.log(moles[i],"moles[i]")
-      console.log("inside loop of next frame" )
+
       getNextStatus(moles[i]);
     }
     runAgainAt = now+100;
