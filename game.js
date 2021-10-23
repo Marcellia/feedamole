@@ -4,7 +4,8 @@ function getSadInterval() {
 function getGoneInterval() {
     return Date.now()+ Math.floor(Math.random()*20000)+2000
 }
-
+let startTime = Date.now()
+let endTime = Date.now() + 30000
 
 const getInterval = () =>
   Date.now() + 2000 + Math.floor(Math.random() * 20000);
@@ -148,13 +149,19 @@ const mole = moles[parseInt(event.target.dataset.index)]
      score++
    }
 
+wormContainer.style.width = `${10*score}%`;
+
+document.querySelector(".score").innerHTML=`${score}`
+
+console.log(endTime , Date.now())
 if(score>=10) {
 win();
 return;
 }
-wormContainer.style.width = `${10*score}%`;
 
-document.querySelector(".score").innerHTML=`${score}`
+
+
+
 }
 
 const win = () => {
@@ -162,9 +169,19 @@ const win = () => {
     document.querySelector(".win").classList.remove("hide");
   };
 
+  const loose = () =>{
+    document.querySelector(".bg").classList.add("hide");
+    document.querySelector(".loose").classList.remove("hide");
+
+  }
+
+
+
 let runAgainAt = Date.now()+100;
 // let temp = getSadInterval()
-// let dateNow = Date.now()
+// 
+
+
 
 
 const nextFrame = () => {
@@ -181,6 +198,12 @@ const nextFrame = () => {
       runAgainAt = now+100;
       
     }
+    console.log(endTime, Date.now)
+    if ( endTime <= Date.now() && score<10){
+      loose();
+      return;
+      }
+    
     requestAnimationFrame(nextFrame);
   };
   
