@@ -3,22 +3,24 @@
 }
 
 body {
-    cursor: url("./cursor.png"), default;
-    background-color: #c0c86d;
-    display: flex;
-
-    justify-content: center;
+cursor: url("./cursor.png"), default;
+background-color: #c0c86d;
+display: flex;
+justify-content: center;
 align-items: center;
 padding: 0;
-margin: 0;
+margin: auto;
 height: 100vh;
+max-width: 700px;
+max-height: 700px;
+
 }
 
 .bg {
     background-image: url("./background.png");
     background-repeat: no-repeat;
-    width: 1920px;
-    height: 1080px;
+    /* width: 1920px;
+    height: 1080px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -28,8 +30,8 @@ align-items: center;
 .hole {
 background-color: black;
 border-radius: 50%;
-width: 260px;
-height: 260px;
+width: 160px;
+height:160px;
 overflow: visible;
 display: flex;
 justify-content: center;
@@ -57,7 +59,11 @@ justify-content: center;
 }
 
 .worm {
-    width: 1660px
+    width: 560px
+}
+.worm-box{
+    display: flex;
+   justify-content: space-between;
 }
 
 .worm-container {
@@ -66,11 +72,12 @@ justify-content: center;
 }
 
 .score{
-    width: 60px;
-    height: 60px;
+    width: 35px;
+    height: 35px;
     color: azure;
-    background-color: black;
-    border-radius: 20%;
+    background-image: url("ladybug.jpeg");
+    background-position: center;
+    border-radius: 50%; 
     justify-content: center;
     display: flex;
     align-items: center;
@@ -80,7 +87,7 @@ justify-content: center;
 }
 
 .Refresh {
-    width: 1080px;
+    width: 500px;
     height: 200px;
     color: azure;
     background-color: black;
@@ -90,6 +97,13 @@ justify-content: center;
     align-items: center;
     font-weight: 900;
     font-family: "Lucida Console", "Courier New", monospace;
-    font-size: 500%;
+    font-size: 300%;
 }
 
+.timer{
+    color: white;
+    justify-content: center;
+    display: flex;
+    font-weight: 900;
+
+}

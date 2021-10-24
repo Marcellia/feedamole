@@ -6,6 +6,7 @@ function getGoneInterval() {
 }
 let startTime = Date.now()
 let endTime = Date.now() + 30000
+let remainingTime = 30000
 
 const getInterval = () =>
   Date.now() + 2000 + Math.floor(Math.random() * 20000);
@@ -153,6 +154,7 @@ wormContainer.style.width = `${10*score}%`;
 
 document.querySelector(".score").innerHTML=`${score}`
 
+
 console.log(endTime , Date.now())
 if(score>=10) {
 win();
@@ -198,11 +200,15 @@ const nextFrame = () => {
       runAgainAt = now+100;
       
     }
-    console.log(endTime, Date.now)
+
+    remainingTime = Math.round((endTime-Date.now())/1000)
+    document.querySelector(".timer").innerHTML=`${remainingTime}`
     if ( endTime <= Date.now() && score<10){
       loose();
       return;
       }
+
+    
     
     requestAnimationFrame(nextFrame);
   };
@@ -211,3 +217,4 @@ const nextFrame = () => {
   document.querySelector('.bg').addEventListener('click',feed); 
 
   nextFrame();
+
