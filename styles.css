@@ -104,20 +104,19 @@ body {
 }
 
 @media only screen and (min-width: 480px) {
-    .hole {
-        width: 4em;
-        height:4em;
-    }
-.img {
+  .hole {
+    width: 4em;
+    height: 4em;
+  }
+  .img {
     width: 3em;
-    height:3em;
+    height: 3em;
+  }
+  .worm {
+    width: 100px;
+  }
+  .score {
+    width: 35px;
+    height: 35px;
+  }
 }
-    .worm {
-        width: 100px
-    }
-    .score{
-        width: 35px;
-        height: 35px;
-
-
-} */
