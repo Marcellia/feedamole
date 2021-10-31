@@ -103,7 +103,7 @@ body {
   margin-bottom: 2%;
 }
 
-@media only screen and (min-width: 480px) {
+@media only screen and (max-width: 600px) {
   .hole {
     width: 4em;
     height: 4em;
@@ -113,10 +113,10 @@ body {
     height: 3em;
   }
   .worm {
-    width: 100px;
+    width: 7em;
   }
   .score {
-    width: 35px;
-    height: 35px;
+    width: 1em;
+    height: 1em;
   }
 }
