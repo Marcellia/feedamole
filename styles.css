@@ -109,3 +109,20 @@ justify-content: center;
     font-weight: 900;
 
 }
+
+@media only screen and (max-width: 600px) {
+    .hole {
+        width: 2em;
+        height:2em;
+
+    }
+
+    .worm {
+        width: 100px
+    }
+    .score{
+        width: 35px;
+        height: 35px;
+
+
+}
